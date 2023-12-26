@@ -54,7 +54,7 @@ function updateTrans(e) {
     const xPercent = getXPercent(e.pageX);
     const yPercent = getYPercent(e.pageY);
     setXRot(xPercent * maxRot);
-    setYRot(yPercent * maxRot);
+    setYRot(yPercent);
   // Calculate the distance from the mouse position to the center.
   const xL = e.clientX - centerXL;
   const yL = e.clientY - centerYL;
@@ -79,6 +79,8 @@ function updateTrans(e) {
   const scaledXRPercent = xRPercent * maxTrans;
   const scaledYRPercent = yRPercent * maxTrans;
 
+  console.log("with max", scaledXRPercent , scaledXLPercent)
+
 //   update with gsap.quickTo for performance
   gsap.to(leftEye, { xPercent: scaledXLPercent, yPercent: scaledYLPercent, duration: 0.2, overwrite: 'auto' });
   gsap.to(rightEye, { xPercent: scaledXRPercent, yPercent: scaledYRPercent, duration: 0.2, overwrite: 'auto' });
@@ -86,8 +88,6 @@ function updateTrans(e) {
   if (xF > 0) {
       gsap.to(leftEyebrow, { yPercent: 20, duration: 2, overwrite: 'auto' });
       gsap.to(rightEyebrow, { yPercent: 1, duration: 2, overwrite: 'auto' });
-
-      
   }
   else {
       gsap.to(rightEyebrow, { yPercent: 20, duration: 2, overwrite: 'auto' });
@@ -110,3 +110,38 @@ window.addEventListener('resize', resize);
 resize();
 
 document.querySelector('body').addEventListener('mousemove', updateTrans);
+
+
+let container = document.querySelector(".portfolio");
+let tl = gsap.timeline({
+  scrollTrigger: {
+    pin: true,
+    scrub: 1,
+    trigger: container,
+    end: () => container.scrollWidth - document.documentElement.clientWidth
+  },
+  defaults: { ease: "none", duration: 1 }
+});
+
+tl.to(".parallax", { x: 200 })
+  .to(".panel", { x: () => -(container.scrollWidth - document.documentElement.clientWidth) }, 0)
+  .from(".secondAn", {
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.2,
+    stagger: {
+      amount: 0.8
+    }
+  }, 0);
+
+gsap.from(".firstAn", {
+  duration: 1,
+  opacity: 0,
+  scale: .5,
+  scrollTrigger: {
+    trigger: container,
+    start: "top 90%",
+    end: "bottom 10%",
+    toggleActions: "play none none reverse"
+  }
+});
