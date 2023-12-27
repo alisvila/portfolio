@@ -12,6 +12,7 @@ let maxXDist, maxYDist;
 
 let centerXL, centerYL, centerXR, centerYR, centerXF, centerYF;
 // var requestId = null;
+gsap.set(face, {transformOrigin: "center bottom"});
 
 const maxRot = 10;
 const setXRot = gsap.quickSetter(face, "rotationX", "deg");
@@ -21,8 +22,6 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 
 
 
-
-gsap.set(face, {transformOrigin: "center center"});
 let getYPercent, getXPercent;
 
 function resize() {
@@ -51,15 +50,17 @@ function resize() {
 }
 
 function updateTrans(e) {
-    const xPercent = getXPercent(e.pageX);
+    // const xPercent = getXPercent(e.pageX);
     const yPercent = getYPercent(e.pageY);
-    setXRot(xPercent * maxRot);
-    setYRot(yPercent);
+    // console.log(yPercent)
+    // setXRot(xPercent * maxRot);
+    // setYRot(yPercent* maxRot* maxRot);
   // Calculate the distance from the mouse position to the center.
   const xL = e.clientX - centerXL;
   const yL = e.clientY - centerYL;
 
   const xF = e.clientX - centerXF;
+  const yF = e.clientY - centerYF;
 
   const xR = e.clientX - centerXR;
   const yR = e.clientY - centerYR;
@@ -79,8 +80,6 @@ function updateTrans(e) {
   const scaledXRPercent = xRPercent * maxTrans;
   const scaledYRPercent = yRPercent * maxTrans;
 
-  console.log("with max", scaledXRPercent , scaledXLPercent)
-
 //   update with gsap.quickTo for performance
   gsap.to(leftEye, { xPercent: scaledXLPercent, yPercent: scaledYLPercent, duration: 0.2, overwrite: 'auto' });
   gsap.to(rightEye, { xPercent: scaledXRPercent, yPercent: scaledYRPercent, duration: 0.2, overwrite: 'auto' });
@@ -92,6 +91,24 @@ function updateTrans(e) {
   else {
       gsap.to(rightEyebrow, { yPercent: 20, duration: 2, overwrite: 'auto' });
       gsap.to(leftEyebrow, { yPercent: 1, duration: 2, overwrite: 'auto' });
+      // gsap.to(face, { rotation: 2, duration: 2, overwrite: 'auto' });
+  }
+
+  console.log(xF , yF)
+
+  if (xF > 0 && yF > 0 ) {
+    gsap.to(face, { rotation: 3, duration: 2, overwrite: 'auto' });
+  }
+  else if (xF > 0 && yF < 0 ) {
+    gsap.to(face, { rotation: -2, duration: 2, overwrite: 'auto' });
+
+  }
+  else if (xF < 0 && yF < 0 ) {
+    gsap.to(face, { rotation: 3, duration: 2, overwrite: 'auto' });
+
+  }
+  else if (xF < 0 && yF > 0 ) {
+    gsap.to(face, { rotation: -2, duration: 2, overwrite: 'auto' });
 
   }
 
