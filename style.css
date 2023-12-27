@@ -13,18 +13,41 @@
     src: url(fonts/Amagro.ttf);
   }
 
+  @font-face {
+    font-family: biter;
+    src: url(fonts/Bitter-Bold.otf);
+  }
+
+  @font-face {
+    font-family: biter-regular;
+    src: url(fonts/Bitter-Regular.otf);
+  }
+
+  @font-face {
+    font-family: inter;
+    src: url(fonts/Inter-SemiBold.otf);
+  }
+
+  @font-face {
+    font-family: inter-thin;
+    src: url(fonts/Inter-Thin.otf);
+  }
+
 body {
     margin: 0;
     padding: 0;
     /* display: flex; */
     width: 100%;
     background-color: #e1e1e1;
+    font-family: inter;
 }
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
     --bg: #f0f0f0;
+    --gray: #e1e1e1;
     --green: #79a878;
+    --text: #202020;
   }
 
 .text-shadow {
@@ -42,20 +65,24 @@ body {
 }
 
 .title-hi {
-    font-size: 16px;
-    font-family: roboto;
+    font-size: 20px;
+    font-family: inter;
     color: #202020;
+    line-height: 3.5rem;
 }
 .title-name {
-    font-size: 48px;
-    font-family: jose;
+    font-size: 68px;
+    font-family: biter;
     color: #38643a;
+    line-height: 4.5rem;
 }
 
 .title-job {
-    font-size: 48px;
-    font-family: jose;
+    font-size: 58px;
+    font-family: biter;
     color: var(--green);
+    line-height: 4.5rem;
+
 }
 
 .eye {
@@ -118,9 +145,29 @@ body {
     text-transform: uppercase;
     color: #919795;
     font-size: 1.2rem;
+    font-family: inter-thin;
+
     /* transform: translateX(-50%); */
 }
 
+.page-header-scroll:after {
+    content: "";
+    transform-origin: bottom center;
+    position: absolute;
+    width: 1px;
+    height: 50vh;
+    left: 60px;
+    top: calc(100% + 35px);
+    background: var(--green);
+    opacity: .45;
+    animation: vLineIn 1s ease-in-out 1.5s backwards;
+}
+
+@keyframes vLineIn {
+    0% {
+        transform: scaleY(0);
+    }
+}
 .page-header-scroll>span {
     animation: reveal 1s ease-out 1.5s backwards;
 }
@@ -260,7 +307,7 @@ h1 {
   align-content: center;
   justify-content: center;
   height: 100%;
-  padding: 10rem 7rem 10rem 7rem;
+  padding: 5rem 11rem 6rem 11rem;
   background-color: transparent;
   overflow: hidden;
 }
@@ -278,6 +325,19 @@ h1 {
 .about-section {
     height: 100dvh;
     padding: 104px;
+    position: relative;
+}
+
+.about-content {
+    line-height: 1.8rem;
+    font-size: 1rem;
+    font-family: inter;
+}
+
+.about-title h1{
+    font-family: biter;
+    font-size: 5rem;
+    margin: 0;
 }
 
 .about-wrapper {
@@ -289,8 +349,68 @@ h1 {
     align-content: center;
     display: grid;
     height: 100%;
-    
+    justify-content: space-around;
+    align-items: start;
+    justify-items: center;
+    padding: 7rem;
 }
+
+.shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* left: 0; */
+    /* top: 121px; */
+    z-index: -1;
+    opacity: 0.4;
+}
+
+
+
+.content {
+    position: absolute;
+    top: -150px;
+    left: 34px;
+    width: 120%;
+    height: 120%;
+}
+
+.band {
+    position: relative;
+    margin: 0;
+    height: 102px;
+    font-weight: 600;
+    color: #ebebeb47;
+    font-size: 135px;
+    letter-spacing: 0px;
+    line-height: 0.8;
+}
+
+.names {
+    display: block;
+    position: relative;
+    width: 150%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.name {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+}
+
+.name--blue {
+    color: var(--gray);
+    position: absolute;
+    top: 8px;
+}
+
+
+
 
 .card-wrapper {
     background-color: rgba(255, 255, 255, .15);  
@@ -306,22 +426,40 @@ h1 {
 }
 
 .card .card-title {
-    font-family: jose;
-    font-size: 40px;
+    font-family: biter;
+    font-size: 3rem;
     padding-bottom: 25px;
     /* transform: rotate(-90deg); */
 
 }
 
 .card .card-body {
-    line-height: 23px;
-    font-size: 1.6rem;
-    font-family: roboto;
+    line-height: 2.3rem;
+    font-size: 1.2rem;
+    font-family: inter;
+}
+
+.card-body ul {
+    padding-left: 0
+}
+
+.card-body li {
+    list-style: none;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid var(--green);
+    color: var(--green);
+    border-radius: 25px;
+    padding: 0 1rem;
+    font-size:1rem;
+    margin-right: 10px;
 }
 
 .marquee-wrapper {
     overflow: hidden;
-    font-family: "Pridi", sans-serif;
+    font-family: inter, sans-serif;
     font-weight: 600;
     font-size: 34px;
     text-transform: uppercase;
@@ -362,3 +500,102 @@ h1 {
         transform: translateX(-100%);
     }
 }
+
+.contact {
+    font-size: 7rem
+}
+/* 
+.contact span:first-child {
+
+}
+
+.contact span:nth-child(2) {
+
+    
+}
+.contact span:nth-child(3) {
+
+}
+
+.text-shadow-green {
+    text-shadow: -1px -1px var(--green),0 -1px var(--green),1px -1px var(--green),-1px 0 var(--green),1px 0 var(--green),-1px 1px var(--green),0 1px var(--green),1px 1px var(--green),-2px -2px var(--green),0 -2px var(--green),2px -2px var(--green),-2px 0 var(--green),2px 0 var(--green),-2px 2px var(--green),0 2px var(--green),2px 2px var(--green),-3px -3px var(--green),0 -3px var(--green),3px -3px var(--green),-3px 0 var(--green),3px 0 var(--green),-3px 3px var(--green),0 3px var(--green),3px 3px var(--green),-4px -4px var(--green),0 -4px var(--green),4px -4px var(--green),-4px 0 var(--green),4px 0 var(--green),-4px 4px var(--green),0 4px var(--green),4px 4px var(--green)
+}
+
+@keyframes scrollBob {
+    0%,10% {
+        transform: none;
+        opacity: 1;
+        color: #919795
+    }
+
+    1%,8% {
+        transform: translateY(-5px);
+        color: #66c569
+    }
+
+    4% {
+        transform: translateY(6px);
+        opacity: 1;
+        color: #919795
+    }
+}
+
+.neonText {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 13px #fff,
+      0 0 18px  var(--green),
+      0 0 25px  var(--green),
+      0 0 30px  var(--green),
+      0 0 40px  var(--green),
+      0 0 50px  var(--green);
+  }
+ */
+
+
+
+
+  
+  .contact p {
+    color: var(--text);
+    font-size: 100px;
+  }
+
+  .contact p:before {
+    content: attr(data-heading);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0) 45%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0) 55%,rgba(255,255,255,0) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    mix-blend-mode: screen;
+    animation: shine 1s infinite;
+    background-size: 200%;
+    text-shadow: 
+      2px 2px 10px rgba(#000, 0.2),
+      -2px 2px 10px rgba(#000, 0.2),
+      -2px -2px 10px rgba(#000, 0.2);
+  }
+
+  @keyframes shine {
+    0% {background-position: -100%;}
+    100% {background-position: 100%;}
+  }
+  
+
+  
+  @keyframes background-text-animation {
+    0%{
+      background-position: left 0px top 50%;
+    }
+    50%{
+      background-position: left 1500px top 50%;
+    }
+    100%{
+      background-position: left 0px top 50%;
+    }
+  }
