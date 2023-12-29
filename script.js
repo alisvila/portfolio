@@ -24,9 +24,6 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 
 
 // the new about
-
-
-
 select = e => document.querySelector(e);
 selectAll = e => document.querySelectorAll(e);
 const stage = select('.shapes');
@@ -65,35 +62,41 @@ function loopAnim() {
         repeat: -1
     });
     
-    tl.to('.names', {
-        y: -102,
-        duration: 5,
+    tl.
+  //   from('.names', {
+  //     y: -302,
+  //     duration: 5,
+  //     ease: 'none'
+  // })
+    to('.names', {
+        y: -950,
+        duration: 30,
         ease: 'none'
     })
-    .from('.name__end--red .bandChar', {
-        y: 120,
-        duration: 3,
-        ease: 'power4',
-        stagger: 0.05
-    }, 1)
-    .from('.name__end--blue .bandChar', {
-        y: 120,
-        duration: 3,
-        ease: 'power4',
-        stagger: 0.05
-    }, 1.3)
-    .from('.band:nth-of-type(5) .name--blue .bandChar', {
-        y: -120,
-        duration: 2,
-        ease: 'power4.inOut',
-        stagger: -0.05
-    }, 0)
-    .to('.band:nth-of-type(6) .name--blue .bandChar', {
-        y: 120,
-        duration: 2,
-        ease: 'power4.inOut',
-        stagger: -0.05
-    }, 0)
+    // .from('.name__end--red .bandChar', {
+    //     y: 520,
+    //     duration: 3,
+    //     ease: 'power4',
+    //     stagger: 0.05
+    // }, 1)
+    // .from('.name__end--blue .bandChar', {
+    //     y: 120,
+    //     duration: 3,
+    //     ease: 'power4',
+    //     stagger: 0.05
+    // }, 1.3)
+    // .from('.band:nth-of-type(5) .name--blue .bandChar', {
+    //     y: -120,
+    //     duration: 2,
+    //     ease: 'power4.inOut',
+    //     stagger: -0.05
+    // }, 0)
+    // .to('.band:nth-of-type(6) .name--blue .bandChar', {
+    //     y: 120,
+    //     duration: 2,
+    //     ease: 'power4.inOut',
+    //     stagger: -0.05
+    // }, 0)
     
     return tl;
 }
@@ -101,15 +104,13 @@ function loopAnim() {
 function init() {
     gsap.set(stage, { autoAlpha: 1 });
     gsap.set('.content', { rotate: -25 });
-    stage.onclick = () => {
-        gltl.restart();
-    }
+    // stage.onclick = () => {
+    //     gltl.restart();
+    // }
     
-    gltl.add(intro());
+    // gltl.add(intro());
     gltl.add(loopAnim(), 0);
 }
-
-
 // end of new about
 
 
