@@ -1,3 +1,5 @@
+gsap.registerPlugin(TextPlugin)
+
 const leftEye = document.querySelector('.left-eye');
 const rightEye = document.querySelector('.right-eye');
 const face = document.querySelector('.face');
@@ -23,6 +25,11 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 
 // const setLeftEye = gsap.quickSetter(leftEye, "rotationY", "deg");
 
+let theme_toggler = document.querySelector('#theme_toggler');
+
+theme_toggler.addEventListener('click', function(){ 
+    document.body.classList.toggle('dark_mode');
+});
 
 // the new about
 select = e => document.querySelector(e);
@@ -319,22 +326,22 @@ portfolio.addEventListener('mouseenter', () => {
       rotate: 0,
       ease: Elastic.easeOut.config(1, 0.3)
   })
-  gsap.to(cursorDot, 0.2, {
-    scale: 1,
-    opacity: 1,
-    top: '-75px',
-    left: '-75px',
-    rotate: 0,
-    ease: Elastic.easeOut.config(1, 0.3)
-})
+//   gsap.to(cursorDot, 0.2, {
+//     scale: 1,
+//     opacity: 1,
+//     top: '-75px',
+//     left: '-75px',
+//     rotate: 0,
+//     ease: Elastic.easeOut.config(1, 0.3)
+// })
 })
 
 portfolio.addEventListener('mousemove', () => {
   console.log(mouseX, mouseY)
-  gsap.to(cursorDot, 0.2, {
-    x: mouseX,
-    y: mouseY - portfolio.getBoundingClientRect().top
-})
+//   gsap.to(cursorDot, 0.2, {
+//     x: mouseX,
+//     y: mouseY - portfolio.getBoundingClientRect().top
+// })
   gsap.to(cursorCircle, 2, {
       x: mouseX - 45,
       y: mouseY - 5 - portfolio.getBoundingClientRect().top
@@ -350,11 +357,19 @@ portfolio.addEventListener('mouseleave', () => {
       left: '40',
       rotate: 45,
   })
-  gsap.to(cursorDot, 0.2, {
-    scale: 0,
-    opacity: 0,
-    top: '10',
-    left: '40',
-    rotate: 45,
+//   gsap.to(cursorDot, 0.2, {
+//     scale: 0,
+//     opacity: 0,
+//     top: '10',
+//     left: '40',
+//     rotate: 45,
+// })
 })
-})
+
+
+const titleContainer = document.querySelector(".title-container");
+const titleBoxes = document.querySelector(".title-boxes")
+
+const tween = gsap.to(titleBoxes, {yPercent:-50, repeat:10, ease:"none"})
+
+const eased = gsap.to(tween, {totalProgress:1, duration:4, ease:"power4.inOut"})

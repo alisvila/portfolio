@@ -42,20 +42,38 @@ body {
     font-family: inter;
 }
 :root {
-    --blue: #1e90ff;
-    --white: #ffffff;
     --bg: #f0f0f0;
     --gray: #e1e1e1;
     --green: #79a878;
     --text: #202020;
+    --second-text: #898cb9;
     --darker-green: #5aa15c;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
-  }
+    --card-shadow: rgba(189, 206, 188, 0.4) 5px 5px,
+                    rgba(189, 206, 188, 0.3) 10px 10px,
+                    rgba(189, 206, 188, 0.2) 15px 15px,
+                    rgba(189, 206, 188, 0.1) 20px 20px,
+                    rgba(189, 206, 188, 0.05) 25px 25px;
+    --text-card-shadow: -1px -1px var(--bg),0 -1px var(--bg),1px -1px var(--bg),-1px 0 var(--bg),1px 0 var(--bg),-1px 1px var(--bg),0 1px var(--bg),1px 1px var(--bg),-2px -2px var(--bg),0 -2px var(--bg),2px -2px var(--bg),-2px 0 var(--bg),2px 0 var(--bg),-2px 2px var(--bg),0 2px var(--bg),2px 2px var(--bg),-3px -3px var(--bg),0 -3px var(--bg),3px -3px var(--bg),-3px 0 var(--bg),3px 0 var(--bg),-3px 3px var(--bg),0 3px var(--bg),3px 3px var(--bg),-4px -4px var(--bg),0 -4px var(--bg),4px -4px var(--bg),-4px 0 var(--bg),4px 0 var(--bg),-4px 4px var(--bg),0 4px var(--bg),4px 4px var(--bg)
+
+}
+
+.pink-theme {
+    --bg: #f0f0f0;
+    --gray: #e1e1e1;
+    --green: #79a878;
+    --text: #202020;
+    --second-text: #898cb9;
+    --darker-green: #5aa15c;
+    --colorMain: #c0c0c0;
+    --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
+    --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
+}
 
 .text-shadow {
-    text-shadow: -1px -1px var(--bg),0 -1px var(--bg),1px -1px var(--bg),-1px 0 var(--bg),1px 0 var(--bg),-1px 1px var(--bg),0 1px var(--bg),1px 1px var(--bg),-2px -2px var(--bg),0 -2px var(--bg),2px -2px var(--bg),-2px 0 var(--bg),2px 0 var(--bg),-2px 2px var(--bg),0 2px var(--bg),2px 2px var(--bg),-3px -3px var(--bg),0 -3px var(--bg),3px -3px var(--bg),-3px 0 var(--bg),3px 0 var(--bg),-3px 3px var(--bg),0 3px var(--bg),3px 3px var(--bg),-4px -4px var(--bg),0 -4px var(--bg),4px -4px var(--bg),-4px 0 var(--bg),4px 0 var(--bg),-4px 4px var(--bg),0 4px var(--bg),4px 4px var(--bg)
+    text-shadow: var(--text-card-shadow)
 }
 
 .intro {
@@ -124,6 +142,7 @@ body {
     align-items: center;
     border: 1px solid var(--green);
     overflow: hidden;
+    box-shadow: var(--card-shadow)
 }
 
 .container-wrapper {
@@ -305,7 +324,8 @@ h1 {
   display: flex;
   flex-wrap: nowrap;
   background-color: #e1e1e1;
-  background-image: url("./tile2.png");
+  background-image: url("./tile2.svg");
+  background-size: 250px;
   overflow: hidden;
   align-items: center;
   border-bottom: 1px solid var(--green);
@@ -454,11 +474,18 @@ h1 {
 
 .card-wrapper {
     background-color: rgba(255, 255, 255, .15);  
-    backdrop-filter: blur(6px);
-    border: 1px solid var(--green);
+    backdrop-filter: blur(8px);
+    border: 1px solid #b4cfb4;
     color: #202020;
     border-radius: 25px;
-    padding: 98px 92px;
+    padding: 6.1rem 5.7rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: #bdcebc 0px 4px 12px; */
+    box-shadow: var(--card-shadow)
 }
 
 .card {
@@ -495,11 +522,16 @@ h1 {
         opacity: 0.08;
     }
 
-
+.card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 .card .card-title {
     font-family: biter;
     /* font-size: 3rem; */
-    padding-bottom: 25px;
+    padding-bottom: 1rem;
     /* transform: rotate(-90deg); */
 
 }
@@ -523,12 +555,18 @@ h1 {
     z-index: 1000;
     user-select: none;
     pointer-events: none;
-
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .cursor-wrapper p {
     margin: 0;
     line-height: 2rem;
+}
+
+.title-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .title-left .company-name {
@@ -537,12 +575,12 @@ h1 {
 }
 
 .title-left span {
-    color: var(--green);
+    color: var(--second-text);
     font-size: 1.3rem;
 }
 
 .title-right {
-    color: var(--green);
+    color: var(--second-text);
     font-size: 1.3rem;
 }
 
@@ -562,19 +600,20 @@ h1 {
 
 .badge {
     display: inline-block;
-    border: 1px solid var(--green);
-    color: var(--green);
+    border: 1px solid #b7bac5;
+    color: #2e3159;
     border-radius: 25px;
     padding: 0 1rem;
-    font-size:1rem;
+    font-size: 1rem;
     margin-right: 10px;
+    background: #e1e2e5;
 }
 
 .marquee-wrapper {
     overflow: hidden;
     font-family: inter, sans-serif;
     font-weight: 600;
-    font-size: 34px;
+    font-size: 2.5rem;
     text-transform: uppercase;
     /* background-color: #FFDC00; */
     background-color: var(--darker-green);
@@ -589,6 +628,8 @@ h1 {
     font-size: 27px;
     border: 1px solid var(--green);
     animation: marquee 3s linear infinite; */
+    background-color: #b4cdb2;
+    color: #898cb9;
 }
 
 .marquee-line {
@@ -597,7 +638,7 @@ h1 {
     padding: 10px 15px;
     /* min-width: 100%; */
     white-space: nowrap;
-    animation: marquee 3s linear infinite;
+    animation: marquee 4s linear infinite;
 
 }
 
@@ -624,9 +665,10 @@ h1 {
 }
 
 .contact p {
-    font-size: 7rem;
-    font-family: bitter;
+    color: var(--text);
     text-shadow: var(--brShadow), var(--tlShadow);
+    font-family: bitter;
+    font-size: 7rem;
     margin-bottom: 1.8rem;
 }
 .contact span {
@@ -741,8 +783,7 @@ h1 {
 
   
   .contact p {
-    color: var(--text);
-    font-size: 100px;
+
   }
 
   .contact p:before {
@@ -799,6 +840,16 @@ h1 {
     }
     .about-title h1 {
         font-size: 4rem;
+    }
+    .panel {
+        padding: 5rem 4rem 6rem 7rem;
+    }
+    .card-wrapper {
+        padding: 3.1rem 4.6rem;
+    }
+    .card .card-body {
+        line-height: 2rem;
+        font-size: 1rem;
     }
 }
 
