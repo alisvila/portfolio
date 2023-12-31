@@ -493,11 +493,13 @@ h1 {
 }
 
 .name--blue {
-    color: var(--gray);
+    color: #b3b3b3;
     position: absolute;
     top: 8px;
 }
-
+.name--red {
+    color: #ffffff;
+}
 
 
 

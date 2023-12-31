@@ -1,10 +1,10 @@
 gsap.registerPlugin(TextPlugin)
 
-const leftEye = document.querySelector('.left-eye');
-const rightEye = document.querySelector('.right-eye');
+const leftEye = document.querySelector('#left-eye');
+const rightEye = document.querySelector('#right-eye');
 const face = document.querySelector('.face');
-const leftEyebrow = document.querySelector('.left-eyebrow');
-const rightEyebrow = document.querySelector('.right-eyebrow');
+const leftEyebrow = document.querySelector('#left-eyebrow');
+const rightEyebrow = document.querySelector('#right-eyebrow');
 const cursorCircle = document.querySelector(".cursor-wrapper")
 const cursorDot = document.querySelector(".dot")
 const portfolio = document.querySelector('.section')
@@ -28,13 +28,13 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 let theme_toggler = document.querySelector('#theme_toggler');
 
 theme_toggler.addEventListener('click', function(){ 
-    document.body.classList.toggle('dark_mode');
+    document.body.classList.toggle('blue-theme');
 });
 
 // the new about
 select = e => document.querySelector(e);
 selectAll = e => document.querySelectorAll(e);
-const stage = select('.shapes');
+const shapesStage = select('.shapes');
 let gltl = gsap.timeline({ delay: 1 });
 // let bandST = new SplitText('.name', {type:"chars", charsClass:"bandChar", position: "absolute" }); 
 
@@ -110,9 +110,9 @@ function loopAnim() {
 }
 
 function init() {
-    gsap.set(stage, { autoAlpha: 1 });
+    gsap.set(shapesStage, { autoAlpha: 1 });
     gsap.set('.content', { rotate: -25 });
-    // stage.onclick = () => {
+    // shapesStage.onclick = () => {
     //     gltl.restart();
     // }
     
@@ -151,14 +151,14 @@ function resize() {
 
 
   let vh = window.innerHeight;
-	let sh = stage.offsetHeight;
+	let sh = shapesStage.offsetHeight;
 	let scaleFactor = vh/sh;
 	if(scaleFactor<1) {
-		gsap.set(stage, { scale: scaleFactor });
+		gsap.set(shapesStage, { scale: scaleFactor });
 	}
 	else {
-        gsap.set(stage, { scale: 1 });
-    }
+    gsap.set(shapesStage, { scale: 1 });
+  }
 
 
 }
