@@ -3,6 +3,9 @@ const rightEye = document.querySelector('.right-eye');
 const face = document.querySelector('.face');
 const leftEyebrow = document.querySelector('.left-eyebrow');
 const rightEyebrow = document.querySelector('.right-eyebrow');
+const cursorCircle = document.querySelector(".cursor-wrapper")
+const cursorDot = document.querySelector(".dot")
+const portfolio = document.querySelector('.section')
 
 // Create a max value for the translation in the x and y directions
 const maxTrans = 30;
@@ -10,7 +13,7 @@ const maxTrans = 30;
 // Create a max distance for the mouse position to the center of the element (the viewport dimensions wouldn't be a bad choice).
 let maxXDist, maxYDist;
 
-let centerXL, centerYL, centerXR, centerYR, centerXF, centerYF;
+let centerXL, centerYL, centerXR, centerYR, centerXF, centerYF, mouseX, mouseY, posX, posY;
 // var requestId = null;
 gsap.set(face, {transformOrigin: "center bottom"});
 
@@ -19,8 +22,6 @@ const setXRot = gsap.quickSetter(face, "rotationX", "deg");
 const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 
 // const setLeftEye = gsap.quickSetter(leftEye, "rotationY", "deg");
-
-
 
 
 // the new about
@@ -162,6 +163,10 @@ function updateTrans(e) {
     // setXRot(xPercent * maxRot);
     // setYRot(yPercent* maxRot* maxRot);
   // Calculate the distance from the mouse position to the center.
+
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
   const xL = e.clientX - centerXL;
   const yL = e.clientY - centerYL;
 
@@ -171,6 +176,8 @@ function updateTrans(e) {
   const xR = e.clientX - centerXR;
   const yR = e.clientY - centerYR;
   // const dist = Math.sqrt(Math.pow(x, 2) + Math.pow(x, 2)); // optionally use the total distance as a factor or restriction
+
+  console.log(centerXL)
   
   // Put that number over the max distance from 2)
   const xLPercent = xL / maxXDist;
@@ -277,3 +284,77 @@ window.onload = () => {
     resize();
     // GSDevTools.create();
 };
+
+// TweenMax.to({}, 0.016, {
+//   repeat: -1,
+//   onRepeat: function() {
+//     posX += (mouseX - posX) / 9;
+//     posY += (mouseY - posY) / 9;
+    
+//     TweenMax.set(follower, {
+//         css: {    
+//         left: posX - 12,
+//         top: posY - 12
+//         }
+//     });
+    
+//     TweenMax.set(cursor, {
+//         css: {    
+//         left: mouseX,
+//         top: mouseY
+//         }
+//     });
+//   }
+// });
+
+gsap.set(cursorDot ,{xPercent:-50, yPercent: -50})
+
+
+portfolio.addEventListener('mouseenter', () => {
+  gsap.to(cursorCircle, 1, {
+      scale: 1,
+      opacity: 1,
+      top: '-75px',
+      left: '-75px',
+      rotate: 0,
+      ease: Elastic.easeOut.config(1, 0.3)
+  })
+  gsap.to(cursorDot, 0.2, {
+    scale: 1,
+    opacity: 1,
+    top: '-75px',
+    left: '-75px',
+    rotate: 0,
+    ease: Elastic.easeOut.config(1, 0.3)
+})
+})
+
+portfolio.addEventListener('mousemove', () => {
+  console.log(mouseX, mouseY)
+  gsap.to(cursorDot, 0.2, {
+    x: mouseX,
+    y: mouseY - portfolio.getBoundingClientRect().top
+})
+  gsap.to(cursorCircle, 2, {
+      x: mouseX - 45,
+      y: mouseY - 5 - portfolio.getBoundingClientRect().top
+  })
+})
+
+portfolio.addEventListener('mouseleave', () => {
+  console.log('mouse left the section')
+  gsap.to(cursorCircle, 0.2, {
+      scale: 0,
+      opacity: 0,
+      top: '10',
+      left: '40',
+      rotate: 45,
+  })
+  gsap.to(cursorDot, 0.2, {
+    scale: 0,
+    opacity: 0,
+    top: '10',
+    left: '40',
+    rotate: 45,
+})
+})
