@@ -114,12 +114,26 @@ body {
     font-family: inter;
     color: #202020;
     line-height: 3.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
+
+.outside {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
+}
+
+.outside * {
+    opacity: 0.2;
+    transform: translateX(600px);
+    transition: transform .5s;
+}
+
 .title-name {
     font-size: 68px;
     font-family: biter;
     color: var(--darker-green);
     line-height: 4.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .title-job {
@@ -127,7 +141,13 @@ body {
     font-family: biter;
     color: var(--green);
     line-height: 4.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
 
+.face {
+    opacity: 0;
+    transform: translateY(115px);
+    transition: transform .5s;
 }
 
 .eye {
@@ -182,6 +202,15 @@ body {
                  -5px -5px 8px #d6f8ff; */
     margin: 25px;
     height: 94dvh;
+}
+
+.theme-changer {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rebeccapurple;
+    color: white;
+    border-radius: 50%;
 }
 
 .page-header-scroll {
@@ -375,7 +404,7 @@ h1 {
 .text-stroke {
     -webkit-text-fill-color: #e1e1e1;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--second-bg);
+    -webkit-text-stroke-color: #5ca593;
 }
 .grid {
   display: flex;

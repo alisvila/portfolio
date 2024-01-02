@@ -1,4 +1,5 @@
 gsap.registerPlugin(TextPlugin)
+gsap.registerPlugin(ScrollTrigger);
 
 const leftEye = document.querySelector('#left-eye');
 const rightEye = document.querySelector('#right-eye');
@@ -8,6 +9,7 @@ const rightEyebrow = document.querySelector('#right-eyebrow');
 const cursorCircle = document.querySelector(".cursor-wrapper")
 const cursorDot = document.querySelector(".dot")
 const portfolio = document.querySelector('.section')
+const word = document.querySelector('.word')
 
 // Create a max value for the translation in the x and y directions
 const maxTrans = 30;
@@ -184,7 +186,6 @@ function updateTrans(e) {
   const yR = e.clientY - centerYR;
   // const dist = Math.sqrt(Math.pow(x, 2) + Math.pow(x, 2)); // optionally use the total distance as a factor or restriction
 
-  console.log(centerXL)
   
   // Put that number over the max distance from 2)
   const xLPercent = xL / maxXDist;
@@ -246,40 +247,177 @@ resize();
 
 document.querySelector('body').addEventListener('mousemove', updateTrans);
 
+let introReveal = gsap.timeline({
+  scrollTrigger: {
+    scrub: 1,
+    trigger: '.container',
+    start: 'center center',
+    end: 'top top',
+    scrub: false,
+    markers: true
+  },
+})
+introReveal.to('.word', {
+  y: 0,
+  stagger: 0.05,
+  delay: 0.2,
+  duration: .1,
+  x:0,
+  opacity: 1,
+})
+introReveal.to(face, {
+  y: 0,
+  duration: .1,
+  x:0,
+  opacity: 1,
+})
+introReveal.to('.full-name', {
+  y: 0,
+  duration: .1,
+  x:0,
+  opacity: 1,
+})
+introReveal.to('.full-job', {
+  y: 0,
+  duration: .1,
+  x:0,
+  opacity: 1,
+})
 
-let container = document.querySelector(".portfolio");
+
+let aboutReveal = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.about-section',
+    start: 'top 80%',
+    end: 'top top',
+    scrub: false
+  },
+})
+
+aboutReveal.to('.about-section .outside *', {
+  y: 0,
+  x:0,
+  opacity: 1,
+  stagger: .2
+})
+
+
+// let firstCardReveal = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.first-card',
+//     start: 'top 80%',
+//     end: 'top top',
+//     scrub: false,
+//     markers: true
+//   },
+// })
+
+// firstCardReveal.to('.first-card .outside *', {
+//   y: 0,
+//   stagger: .2
+// })
+
+// let secondCardReveal = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.second-card',
+//     start: 'left 80%',
+//     end: 'left left',
+//     scrub: false,
+//     markers: true
+//   },
+// })
+
+// secondCardReveal.to('.second-card .outside *', {
+//   y: 0,
+//   stagger: .2
+// })
+
+// let thirdCardReveal = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.second-card',
+//     start: 'left 80%',
+//     end: 'top top',
+//     scrub: false,
+//     markers: true
+//   },
+// })
+
+// thirdCardReveal.to('.third-card .outside *', {
+//   y: 0,
+//   stagger: .2
+// })
+
+// let forthCardReveal = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.forth-card',
+//     start: 'left 80%',
+//     end: 'top top',
+//     scrub: false,
+//     markers: true
+//   },
+// })
+
+// forthCardReveal.to('.forth-card .outside *', {
+//   y: 0,
+//   stagger: .2
+// })
+
+
+
+let container = document.querySelector(".outer");
+let cards = gsap.utils.toArray(".panel")
 let tl = gsap.timeline({
   scrollTrigger: {
     pin: true,
     scrub: 1,
     trigger: container,
-    end: () => container.scrollWidth - document.documentElement.clientWidth
+    end: () => "+=" + container.offsetWidth
   },
   defaults: { ease: "none", duration: 1 }
 });
 
-tl.to(".parallax", { x: 200 })
-  .to(".panel", { x: () => -(container.scrollWidth - document.documentElement.clientWidth) }, 0)
-  .from(".secondAn", {
-    opacity: 0,
-    scale: 0.5,
-    duration: 0.2,
-    stagger: {
-      amount: 0.8
-    }
-  }, 0);
 
-gsap.from(".firstAn", {
-  duration: 1,
-  opacity: 0,
-  scale: .5,
-  scrollTrigger: {
-    trigger: container,
-    start: "top 90%",
-    end: "bottom 10%",
-    toggleActions: "play none none reverse"
-  }
-});
+tl.to(".parallax", { x: 200 })
+  .to(".panel", { x: () => -4000 }, 0)
+
+
+  cards.forEach((stop, index) => {
+    tl.to(stop.querySelectorAll('.outside *'), {
+      x:0,
+      opacity: 1,
+      stagger: .6,
+      delay: .2,
+      ease: "elastic.out(1,0.3)",
+      scrollTrigger: {
+        trigger: stop.querySelector('.card'),
+        start: 'left 80%',
+        end: 'left 80%',
+        containerAnimation: tl,
+        scrub: true,
+        markers: true
+      }
+    })
+  });
+  // .from(".secondAn", {
+  //   opacity: 0,
+  //   scale: 0.5,
+  //   duration: 0.2,
+  //   stagger: {
+  //     amount: 0.8
+  //   }
+  // }, 0);
+
+// gsap.from(".firstAn", {
+//   duration: 1,
+//   opacity: 0,
+//   scale: .5,
+//   scrollTrigger: {
+//     trigger: container,
+//     start: "top 90%",
+//     end: "bottom 10%",
+//     toggleActions: "play none none reverse"
+//   }
+// });
 
 
 
@@ -337,7 +475,6 @@ portfolio.addEventListener('mouseenter', () => {
 })
 
 portfolio.addEventListener('mousemove', () => {
-  console.log(mouseX, mouseY)
 //   gsap.to(cursorDot, 0.2, {
 //     x: mouseX,
 //     y: mouseY - portfolio.getBoundingClientRect().top
