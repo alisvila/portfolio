@@ -43,11 +43,12 @@ body {
 }
 :root {
     --bg: #f0f0f0;
-    --gray: #e1e1e1;
-    --green: #79a878;
+    --second-bg: #EEF5FF;
+    --gray: #EEF0E5;
+    --green: #597E52;
     --text: #202020;
     --second-text: #898cb9;
-    --darker-green: #5aa15c;
+    --darker-green: #1B4242;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
@@ -58,20 +59,34 @@ body {
                     rgba(189, 206, 188, 0.05) 25px 25px;
     --text-card-shadow: -1px -1px var(--bg),0 -1px var(--bg),1px -1px var(--bg),-1px 0 var(--bg),1px 0 var(--bg),-1px 1px var(--bg),0 1px var(--bg),1px 1px var(--bg),-2px -2px var(--bg),0 -2px var(--bg),2px -2px var(--bg),-2px 0 var(--bg),2px 0 var(--bg),-2px 2px var(--bg),0 2px var(--bg),2px 2px var(--bg),-3px -3px var(--bg),0 -3px var(--bg),3px -3px var(--bg),-3px 0 var(--bg),3px 0 var(--bg),-3px 3px var(--bg),0 3px var(--bg),3px 3px var(--bg),-4px -4px var(--bg),0 -4px var(--bg),4px -4px var(--bg),-4px 0 var(--bg),4px 0 var(--bg),-4px 4px var(--bg),0 4px var(--bg),4px 4px var(--bg);
     --tile-bg: url("./tile-green.svg");
-    --top-bg: url('./line-bg-green.svg')
+    --top-bg: url('./line-bg-green.svg');
+    --section-bg: #f1f1f1;
+    --parallex-text: #5ca593;
 
 }
 
 .pink-theme {
-    --bg: #f0f0f0;
-    --gray: #e1e1e1;
-    --green: #79a878;
-    --text: #202020;
-    --second-text: #898cb9;
-    --darker-green: #5aa15c;
+    --bg: #F3F8FF;
+    --second-bg: #DFCCFB;
+    --section-bg: #F3F8FF;
+    --gray: #f4f7ff;
+    --green: #C683D7;
+    --text: #313866;
+    --second-text: #BFCFE7;
+    --darker-green: #392467;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
+    --card-shadow: #E7BCDE66 5px 5px,
+                    #E7BCDE4d 10px 10px,
+                    #E7BCDE33 15px 15px,
+                    #E7BCDE1a 20px 20px,
+                    #E7BCDE0d 25px 25px;
+    --text-card-shadow: -1px -1px var(--bg),0 -1px var(--bg),1px -1px var(--bg),-1px 0 var(--bg),1px 0 var(--bg),-1px 1px var(--bg),0 1px var(--bg),1px 1px var(--bg),-2px -2px var(--bg),0 -2px var(--bg),2px -2px var(--bg),-2px 0 var(--bg),2px 0 var(--bg),-2px 2px var(--bg),0 2px var(--bg),2px 2px var(--bg),-3px -3px var(--bg),0 -3px var(--bg),3px -3px var(--bg),-3px 0 var(--bg),3px 0 var(--bg),-3px 3px var(--bg),0 3px var(--bg),3px 3px var(--bg),-4px -4px var(--bg),0 -4px var(--bg),4px -4px var(--bg),-4px 0 var(--bg),4px 0 var(--bg),-4px 4px var(--bg),0 4px var(--bg),4px 4px var(--bg);
+    --tile-bg: url("./assets/tile-pink.svg");
+    --top-bg: url('./assets/line-bg-pink.svg');
+    --parallex-text: #958cbb;
+
 }
 
 .blue-theme {
@@ -91,7 +106,10 @@ body {
                     rgba(187, 207, 212, 0.1) 20px 20px,
                     rgba(187, 207, 212, 0.05) 25px 25px;
     --tile-bg: url("./tile-blue.svg");
-    --top-bg: url('./line-bg-blue.svg')
+    --top-bg: url('./line-bg-blue.svg');
+    --top-bg: url('./line-bg-blue.svg');
+    --section-bg: #f1f1f1;
+    --parallex-text: #538ab9;
 
 }
 /* #9fc4cb */
@@ -113,7 +131,7 @@ body {
     font-size: 20px;
     font-family: inter;
     color: #202020;
-    line-height: 3.5rem;
+    line-height: 1.5rem;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -132,7 +150,7 @@ body {
     font-size: 68px;
     font-family: biter;
     color: var(--darker-green);
-    line-height: 4.5rem;
+    line-height: 5.5rem;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -145,9 +163,9 @@ body {
 }
 
 .face {
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(115px);
-    transition: transform .5s;
+    /* transition: transform .5s; */
 }
 
 .eye {
@@ -208,9 +226,16 @@ body {
     position: fixed;
     bottom: 30px;
     left: 30px;
-    background: rebeccapurple;
-    color: white;
-    border-radius: 50%;
+    /* background: rebeccapurple; */
+    color:  var(--darker-green);
+    border-radius: 20%;
+    z-index: 9999;
+    padding: 20px 10px;
+    margin: 2px;
+    border: 1px solid var(--darker-green);
+    background-color: var(--second-bg);
+    cursor: pointer;
+    user-select: none;
 }
 
 .page-header-scroll {
@@ -288,7 +313,7 @@ body {
 
     1%,8% {
         transform: translateY(-5px);
-        color: #66c569
+        color: var(--green)
     }
 
     4% {
@@ -381,7 +406,7 @@ h1 {
   height: 100vh;
   display: flex;
   flex-wrap: nowrap;
-  background-color: #e1e1e1;
+  background-color: var(--section-bg);
   background-image: var(--tile-bg);
   background-size: 250px;
   overflow: hidden;
@@ -402,9 +427,9 @@ h1 {
   transform: translate(-600px, 0px);
 }
 .text-stroke {
-    -webkit-text-fill-color: #e1e1e1;
+    -webkit-text-fill-color: var(--section-bg);
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #5ca593;
+    -webkit-text-stroke-color: var(--parallex-text);
 }
 .grid {
   display: flex;
@@ -453,6 +478,7 @@ h1 {
     font-family: biter;
     font-size: 5rem;
     margin: 0;
+    color: var(--darker-green);
 }
 
 .about-wrapper {
@@ -533,7 +559,8 @@ h1 {
 .card-wrapper {
     background-color: rgba(255, 255, 255, .15);  
     backdrop-filter: blur(8px);
-    border: 1px solid #b4cfb4;
+    /* border: 1px solid #b4cfb4; */
+    border: 1px solid var(--green);
     color: #202020;
     border-radius: 25px;
     padding: 6.1rem 5.7rem;
@@ -595,7 +622,7 @@ h1 {
 }
 
 .cursor-wrapper {
-    background-color: var(--darker-green);
+    background-color: var(--green);
     color: var(--bg);
     border-radius: 50%;
     width: 110px;
@@ -687,7 +714,9 @@ h1 {
     border: 1px solid var(--green);
     animation: marquee 3s linear infinite; */
     background-color: var(--second-bg);
+    /* DFCCFB */
     color: #264e70;
+    /* #264e70 */
 }
 
 .marquee-line {
@@ -723,7 +752,7 @@ h1 {
 }
 
 .contact p {
-    color: var(--text);
+    color: var(--darker-green);
     text-shadow: var(--brShadow), var(--tlShadow);
     font-family: bitter;
     font-size: 7rem;

@@ -30,7 +30,7 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 let theme_toggler = document.querySelector('#theme_toggler');
 
 theme_toggler.addEventListener('click', function(){ 
-    document.body.classList.toggle('blue-theme');
+    document.body.classList.toggle('pink-theme');
 });
 
 // the new about
@@ -266,9 +266,7 @@ introReveal.to('.word', {
   opacity: 1,
 })
 introReveal.to(face, {
-  y: 0,
   duration: .1,
-  x:0,
   opacity: 1,
 })
 introReveal.to('.full-name', {
