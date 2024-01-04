@@ -107,7 +107,6 @@ body {
                     rgba(187, 207, 212, 0.05) 25px 25px;
     --tile-bg: url("./tile-blue.svg");
     --top-bg: url('./line-bg-blue.svg');
-    --top-bg: url('./line-bg-blue.svg');
     --section-bg: #f1f1f1;
     --parallex-text: #538ab9;
 
@@ -128,7 +127,7 @@ body {
 }
 
 .title-hi {
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: inter;
     color: #202020;
     line-height: 1.5rem;
@@ -137,7 +136,7 @@ body {
 
 .outside {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .outside * {
@@ -147,7 +146,7 @@ body {
 }
 
 .title-name {
-    font-size: 68px;
+    font-size: 4.2rem;
     font-family: biter;
     color: var(--darker-green);
     line-height: 5.5rem;
@@ -155,7 +154,7 @@ body {
 }
 
 .title-job {
-    font-size: 58px;
+    font-size: 3.6rem;
     font-family: biter;
     color: var(--green);
     line-height: 4.5rem;
@@ -163,9 +162,13 @@ body {
 }
 
 .face {
-    /* opacity: 0; */
-    transform: translateY(115px);
+    opacity: 0;
+    transform: translateY(215px);
     /* transition: transform .5s; */
+}
+
+.face-wraper {
+    padding: 0 7rem 
 }
 
 .eye {
@@ -203,7 +206,8 @@ body {
     align-items: center;
     border: 1px solid var(--green);
     overflow: hidden;
-    box-shadow: var(--card-shadow)
+    box-shadow: var(--card-shadow);
+    padding: 5rem;
 }
 
 .container-wrapper {
@@ -224,11 +228,11 @@ body {
 
 .theme-changer {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    bottom: 46px;
+    left: 40px;
     /* background: rebeccapurple; */
     color:  var(--darker-green);
-    border-radius: 20%;
+    border-radius: 24%;
     z-index: 9999;
     padding: 20px 10px;
     margin: 2px;
@@ -236,6 +240,10 @@ body {
     background-color: var(--second-bg);
     cursor: pointer;
     user-select: none;
+}
+
+.theme-changer:hover {
+    transform: perspective(500px) rotateX(10deg);
 }
 
 .page-header-scroll {
@@ -338,7 +346,7 @@ body {
 }
 
 .face-bg img{
-    height: 100dvh;
+    min-height: 100dvh;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
@@ -463,8 +471,8 @@ h1 {
 }
 
 .about-section {
-    height: 100dvh;
-    padding: 104px;
+    min-height: 100dvh;
+    padding: 6.5rem;
     position: relative;
 }
 
@@ -751,12 +759,14 @@ h1 {
     align-items: center;
 }
 
-.contact p {
+.contact div {
     color: var(--darker-green);
     text-shadow: var(--brShadow), var(--tlShadow);
     font-family: bitter;
-    font-size: 7rem;
+    font-size: 6rem;
+    font-weight: 500;;
     margin-bottom: 1.8rem;
+    letter-spacing: 0;
 }
 .contact span {
     text-shadow: var(--brShadow), var(--tlShadow);
@@ -864,11 +874,32 @@ h1 {
       0 0 50px  var(--green);
   }
  */
+.no-opacity * {
+    opacity: 0;
+}
 
+.talk-header div {
+    max-width: 350px;
+}
 
+.talk-footer div {
+    min-width: 150px;
+    padding: 2rem;
+}
 
+.talk-footer a {
+    position: absolute;
+    text-decoration: none;
+    color: var(--parallex-text);
+    transition: all .1s ease-in;
+    padding: 0.4rem 1rem;
+}
 
-  
+.talk-footer a:hover {
+    font-size: larger;
+    letter-spacing: .3rem;
+}
+
   .contact p {
 
   }
@@ -938,6 +969,12 @@ h1 {
         line-height: 2rem;
         font-size: 1rem;
     }
+    .frosted {
+        padding: 4rem;
+    }
+    .face-wraper {
+        padding: 0 3rem;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -969,8 +1006,61 @@ h1 {
     .page-header-scroll:after {
         top: calc(100% + 15px );
     }
+    .about-section {
+        padding: 4.5rem;
+        text-align: center;
+    }
+    .panel {
+        padding: 2.5rem 2.5rem 3rem 2.5rem;
+    }
 }
 
+@media (max-width: 500px) {
+    .page-header-scroll {
+        bottom: -64px;
+        left: 119px;
+    }
+    .title-job {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    .title-name {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+    .intro {
+        text-align: center;
+    }
+    .about-section {
+        padding: 2.5rem;
+    }
+    .about-title h1 {
+        font-size: 3rem;
+    }
+    .panel {
+        padding: 3.5rem 1.5rem 4rem 1.5rem;
+    }
+    .card-wrapper {
+        padding:1.1rem 1.2rem;
+    }
+    .card-title {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    .card .card-title {
+        padding-bottom: 0;
+    }
+    .card .card-body {
+        line-height: 1.2rem;
+        font-size: 1rem;
+    }
+    .title-left .company-name {
+        font-size: 1.8rem;
+    }
+    .talk-footer div {
+        min-width: 87px;
+    }
+}
 .text {
     color: var(--colorMain);
     font-size: 8em;
@@ -980,6 +1070,51 @@ h1 {
     text-shadow: var(--brShadow), 
                  var(--tlShadow);
     position: relative;
-    
-    
+  }
+
+  .change-themer {
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border-radius: 25%;
+    border: none;
+    font-size: 1rem;
+    background: var(--darker-green);
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1;
+    clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 5%, 96% 5%, 96% 95%, 0 94%, 2% 100%, 100% 100%, 100% 0%);
+  }
+  .change-themer:active{
+    transform: scale(0.95);
+  }
+  .change-themer::before{
+    content: '';
+    position: absolute;
+    inset: 20px -8px  17px -20px;
+    background: var(--green);
+    transition: 500ms;
+    animation: rotate 4s linear infinite;
+    z-index: -1;
+    /* clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 5%, 96% 5%, 96% 95%, 0 94%, 2% 100%, 100% 100%, 100% 0%); */
+    clip-path: polygon(0% 0%, 0% 100%, 16% 100%, 16% 14%, 88% 14%, 88% 84%, 12% 84%, 15% 100%, 100% 100%, 100% 0);
+
+  }
+  .change-themer:hover::before{
+    inset: -12px;
+  }
+  .change-themer::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 25%;
+    background: var(--gray);
+    z-index: -1;
+  }
+  @keyframes rotate {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
   }

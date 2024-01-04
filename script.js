@@ -33,6 +33,7 @@ theme_toggler.addEventListener('click', function(){
     document.body.classList.toggle('pink-theme');
 });
 
+let cardLength
 // the new about
 select = e => document.querySelector(e);
 selectAll = e => document.querySelectorAll(e);
@@ -149,7 +150,7 @@ function resize() {
   centerXF = faceArea.left + RF;
   centerYF = faceArea.top + RF;
 
-
+  cardLength = document.documentElement.clientWidth * 3
 
 
   let vh = window.innerHeight;
@@ -253,8 +254,7 @@ let introReveal = gsap.timeline({
     trigger: '.container',
     start: 'center center',
     end: 'top top',
-    scrub: false,
-    markers: true
+    scrub: false
   },
 })
 introReveal.to('.word', {
@@ -266,8 +266,8 @@ introReveal.to('.word', {
   opacity: 1,
 })
 introReveal.to(face, {
-  duration: .1,
   opacity: 1,
+  y:0
 })
 introReveal.to('.full-name', {
   y: 0,
@@ -369,14 +369,14 @@ let tl = gsap.timeline({
     pin: true,
     scrub: 1,
     trigger: container,
-    end: () => "+=" + container.offsetWidth
+    end: () => container.scrollWidth - document.documentElement.clientWidth
   },
   defaults: { ease: "none", duration: 1 }
 });
 
 
 tl.to(".parallax", { x: 200 })
-  .to(".panel", { x: () => -4000 }, 0)
+  .to(".panel", { x: () =>{console.log(cardLength); return (-(cardLength))} }, 0)
 
 
   cards.forEach((stop, index) => {
@@ -391,8 +391,7 @@ tl.to(".parallax", { x: 200 })
         start: 'left 80%',
         end: 'left 80%',
         containerAnimation: tl,
-        scrub: true,
-        markers: true
+        scrub: true
       }
     })
   });
@@ -508,3 +507,35 @@ const titleBoxes = document.querySelector(".title-boxes")
 const tween = gsap.to(titleBoxes, {yPercent:-50, repeat:10, ease:"none"})
 
 const eased = gsap.to(tween, {totalProgress:1, duration:4, ease:"power4.inOut"})
+
+let letsReveal = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.lets-section',
+    start: '10% center',
+    end: 'center center',
+    markers: true
+  },
+})
+letsReveal.to('.no-opacity *', {
+  y: 0,
+  stagger: 0.05,
+  duration: .1,
+  x:0,
+  opacity: 1,
+})
+
+
+function scrollToHash(hash, e) {
+  const elem = hash ? document.querySelector(hash) : false;
+  if(elem) {
+    if(e) e.preventDefault();
+    gsap.to(window, {scrollTo: elem});
+  }
+}
+document.querySelectorAll('a[href]').forEach(a => {
+  a.addEventListener('click', e => {
+    scrollToHash(a.hash, e);
+  });
+});
+
+// scrollToHash(window.location.hash);
