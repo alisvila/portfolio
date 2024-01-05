@@ -15,7 +15,14 @@
 
   @font-face {
     font-family: biter;
+    font-weight: 700;
     src: url(fonts/Bitter-Bold.otf);
+  }
+
+  @font-face {
+    font-family: biter;
+    font-weight: 400;
+    src: url(fonts/Bitter-Regular.otf);
   }
 
   @font-face {
@@ -229,7 +236,7 @@ body {
 .theme-changer {
     position: fixed;
     bottom: 46px;
-    left: 40px;
+    right: 40px;
     /* background: rebeccapurple; */
     color:  var(--darker-green);
     border-radius: 24%;
@@ -237,13 +244,11 @@ body {
     padding: 20px 10px;
     margin: 2px;
     border: 1px solid var(--darker-green);
-    background-color: var(--second-bg);
+    /* background-color: var(--second-bg); */
     cursor: pointer;
     user-select: none;
-}
-
-.theme-changer:hover {
-    transform: perspective(500px) rotateX(10deg);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
 }
 
 .page-header-scroll {
@@ -394,6 +399,12 @@ body {
     padding: 28px 0;
     font-size: 1.2rem;
     text-shadow: var(--brShadow), var(--tlShadow);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 1rem;
+    grid-template-rows: auto;
+    justify-items: center;
+    grid-auto-columns: 1fr;
 }
 
 h1 {
@@ -484,7 +495,7 @@ h1 {
 
 .about-title h1 {
     font-family: biter;
-    font-size: 5rem;
+    font-size: 4rem;
     margin: 0;
     color: var(--darker-green);
 }
@@ -678,8 +689,8 @@ h1 {
 }
 
 .card .card-body {
-    line-height: 2.3rem;
-    font-size: 1.2rem;
+    line-height: 2rem;
+    /* font-size: 1.2rem; */
     font-family: inter;
 }
 
@@ -762,11 +773,12 @@ h1 {
 .contact div {
     color: var(--darker-green);
     text-shadow: var(--brShadow), var(--tlShadow);
-    font-family: bitter;
+    font-family: biter;
     font-size: 6rem;
     font-weight: 500;;
     margin-bottom: 1.8rem;
     letter-spacing: 0;
+    text-align: center;
 }
 .contact span {
     text-shadow: var(--brShadow), var(--tlShadow);
@@ -949,6 +961,9 @@ h1 {
         grid-gap: 1rem;
         padding: 0;
     }
+    .contact div {
+        font-size: 5rem;
+    }
 }
 
 @media (max-width: 1300px) and (min-width: 1000px) {
@@ -960,10 +975,11 @@ h1 {
         font-size: 4rem;
     }
     .panel {
-        padding: 5rem 4rem 6rem 7rem;
+        padding: 5rem 4rem 7rem 4rem;
     }
     .card-wrapper {
         padding: 3.1rem 4.6rem;
+        /* 6.1rem 5.7rem */
     }
     .card .card-body {
         line-height: 2rem;
@@ -984,6 +1000,7 @@ h1 {
     .intro {
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
     .frosted {
         flex-direction: column-reverse;
@@ -1011,7 +1028,17 @@ h1 {
         text-align: center;
     }
     .panel {
-        padding: 2.5rem 2.5rem 3rem 2.5rem;
+        padding: 4.5rem 2.5rem 6rem 2.5rem;
+    }
+    .card-wrapper {
+        padding: 3.1rem 1.7rem;
+    }
+    .card .card-body {
+        line-height: 1.3rem;
+        font-size: 1rem;
+    }
+    .talk-header {
+        opacity: 0;
     }
 }
 
@@ -1055,11 +1082,15 @@ h1 {
         font-size: 1rem;
     }
     .title-left .company-name {
-        font-size: 1.8rem;
+        font-size: 2.8rem;
     }
     .talk-footer div {
         min-width: 87px;
     }
+    .contact div {
+        font-size: 4rem;
+    }
+
 }
 .text {
     color: var(--colorMain);
@@ -1082,7 +1113,8 @@ h1 {
     font-weight: 500;
     cursor: pointer;
     z-index: 1;
-    clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 5%, 96% 5%, 96% 95%, 0 94%, 2% 100%, 100% 100%, 100% 0%);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 5%, 96% 5%, 96% 95%, 0 94%, 2% 100%, 100% 100%, 100% 0%); */
   }
   .change-themer:active{
     transform: scale(0.95);
@@ -1091,12 +1123,10 @@ h1 {
     content: '';
     position: absolute;
     inset: 20px -8px  17px -20px;
-    background: var(--green);
+    background: var(--second-bg);
     transition: 500ms;
     animation: rotate 4s linear infinite;
     z-index: -1;
-    /* clip-path: polygon(0% 0%, 0% 100%, 4% 100%, 4% 5%, 96% 5%, 96% 95%, 0 94%, 2% 100%, 100% 100%, 100% 0%); */
-    clip-path: polygon(0% 0%, 0% 100%, 16% 100%, 16% 14%, 88% 14%, 88% 84%, 12% 84%, 15% 100%, 100% 100%, 100% 0);
 
   }
   .change-themer:hover::before{
@@ -1105,7 +1135,7 @@ h1 {
   .change-themer::after{
     content: '';
     position: absolute;
-    inset: 3px;
+    inset: 1px;
     border-radius: 25%;
     background: var(--gray);
     z-index: -1;
@@ -1118,3 +1148,7 @@ h1 {
       transform: rotate(360deg);
     }
   }
+
+.theme-icon {
+
+}

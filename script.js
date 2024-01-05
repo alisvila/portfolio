@@ -512,8 +512,7 @@ let letsReveal = gsap.timeline({
   scrollTrigger: {
     trigger: '.lets-section',
     start: '10% center',
-    end: 'center center',
-    markers: true
+    end: 'center center'
   },
 })
 letsReveal.to('.no-opacity *', {
