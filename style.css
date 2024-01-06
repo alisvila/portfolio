@@ -1,12 +1,3 @@
-@font-face {
-    font-family: jose;
-    src: url(fonts/JosefinSans-Regular.ttf);
-  }
-
-  @font-face {
-    font-family: roboto;
-    src: url(fonts/Roboto-Regular.ttf);
-  }
 
   @font-face {
     font-family: amargo;
@@ -22,11 +13,6 @@
   @font-face {
     font-family: biter;
     font-weight: 400;
-    src: url(fonts/Bitter-Regular.otf);
-  }
-
-  @font-face {
-    font-family: biter-regular;
     src: url(fonts/Bitter-Regular.otf);
   }
 
@@ -54,11 +40,12 @@ body {
 :root {
     --bg: #f0f0f0;
     --second-bg: #EEF5FF;
+    --section-bg: #f1f1f1;
     --gray: #EEF0E5;
     --green: #597E52;
+    --darker-green: #1B4242;
     --text: #202020;
     --second-text: #898cb9;
-    --darker-green: #1B4242;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
@@ -68,9 +55,8 @@ body {
                     rgba(189, 206, 188, 0.1) 20px 20px,
                     rgba(189, 206, 188, 0.05) 25px 25px;
     --text-card-shadow: -1px -1px var(--bg),0 -1px var(--bg),1px -1px var(--bg),-1px 0 var(--bg),1px 0 var(--bg),-1px 1px var(--bg),0 1px var(--bg),1px 1px var(--bg),-2px -2px var(--bg),0 -2px var(--bg),2px -2px var(--bg),-2px 0 var(--bg),2px 0 var(--bg),-2px 2px var(--bg),0 2px var(--bg),2px 2px var(--bg),-3px -3px var(--bg),0 -3px var(--bg),3px -3px var(--bg),-3px 0 var(--bg),3px 0 var(--bg),-3px 3px var(--bg),0 3px var(--bg),3px 3px var(--bg),-4px -4px var(--bg),0 -4px var(--bg),4px -4px var(--bg),-4px 0 var(--bg),4px 0 var(--bg),-4px 4px var(--bg),0 4px var(--bg),4px 4px var(--bg);
-    --tile-bg: url("./tile-green.svg");
-    --top-bg: url('./line-bg-green.svg');
-    --section-bg: #f1f1f1;
+    --tile-bg: url("./assets/tile-green.svg");
+    --top-bg: url('./assets/line-bg-green.svg');
     --parallex-text: #5ca593;
 
 }
@@ -81,9 +67,9 @@ body {
     --section-bg: #F3F8FF;
     --gray: #f4f7ff;
     --green: #C683D7;
+    --darker-green: #392467;
     --text: #313866;
     --second-text: #BFCFE7;
-    --darker-green: #392467;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
@@ -101,12 +87,13 @@ body {
 
 .blue-theme {
     --bg: #fbf5ed;
+    --second-bg: #bbd4ce;
+    --section-bg: #f1f1f1;
     --gray: #f1f1f1;
     --green: #538ab9;
     --darker-green: #264e70;
     --text: #202020;
     --second-text: #538ab9;
-    --second-bg: #bbd4ce;
     --colorMain: #c0c0c0;
     --brShadow: -6px 6px 15px rgba(0,0,0,0.5);
     --tlShadow: 6px -6px 15px rgba(255,255,255,0.8);
@@ -115,9 +102,8 @@ body {
                     rgba(187, 207, 212, 0.2) 15px 15px,
                     rgba(187, 207, 212, 0.1) 20px 20px,
                     rgba(187, 207, 212, 0.05) 25px 25px;
-    --tile-bg: url("./tile-blue.svg");
-    --top-bg: url('./line-bg-blue.svg');
-    --section-bg: #f1f1f1;
+    --tile-bg: url("./assets/tile-blue.svg");
+    --top-bg: url('./assets/line-bg-blue.svg');
     --parallex-text: #538ab9;
 
 }
@@ -188,7 +174,7 @@ body {
 }
 
 .face-wraper {
-    padding: 0 7rem 
+    padding: 0 6rem 0 0;
 }
 
 .eye {
@@ -222,7 +208,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--green);
     overflow: hidden;
@@ -928,9 +914,24 @@ h1 {
     letter-spacing: .3rem;
 }
 
-  .contact p {
+.resume {
+    position: absolute;
+    right: 9vw;
+    bottom: 10vh;
+}
 
+.resume a {
+    text-decoration: none;
+    font-size: clamp(1.2rem, 1vw, 2rem);
+    color: var(--parallex-text);
+    transition: all .1s ease-in;
+    padding: 0.4rem 1rem
   }
+
+.resume a:hover {
+    font-size: larger;
+    letter-spacing: .3rem;
+}
 
   .contact p:before {
     content: attr(data-heading);
@@ -972,6 +973,10 @@ h1 {
 @media (min-width: 2000px) {
     .panel {
         padding: 10vw 8vh 16vh 9vw;
+    }
+    .cursor-wrapper {
+        width: 150px;
+        height: 150px;
     }
 }
 

@@ -30,7 +30,7 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 let theme_toggler = document.querySelector('#theme_toggler');
 
 theme_toggler.addEventListener('click', function(){ 
-    document.body.classList.toggle('pink-theme');
+    document.body.classList.toggle('blue-theme');
 });
 
 let cardLength
