@@ -47,6 +47,9 @@ body {
     width: 100%;
     background-color: var(--gray);
     font-family: inter;
+    font-size: clamp(1.2rem, 1vw, 2rem);
+    /* font-size: clamp(1.2rem, 1vw, 2.5rem); */
+    -webkit-text-size-adjust: 100%;
 }
 :root {
     --bg: #f0f0f0;
@@ -134,7 +137,7 @@ body {
 }
 
 .title-hi {
-    font-size: 1.2rem;
+    /* font-size: 1vw; */
     font-family: inter;
     color: #202020;
     line-height: 1.5rem;
@@ -152,19 +155,25 @@ body {
     transition: transform .5s;
 }
 
+.outside-y * {
+    opacity: 0.2;
+    transform: translateY(600px);
+    transition: transform .5s;
+}
+
 .title-name {
-    font-size: 4.2rem;
+    font-size: 3.5vw;
     font-family: biter;
     color: var(--darker-green);
-    line-height: 5.5rem;
+    line-height: clamp(1.5rem, 5vw, 163px);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .title-job {
-    font-size: 3.6rem;
+    font-size: 3vw;
     font-family: biter;
     color: var(--green);
-    line-height: 4.5rem;
+    line-height: clamp(1.5rem, 4vw, 148px);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -172,6 +181,10 @@ body {
     opacity: 0;
     transform: translateY(215px);
     /* transition: transform .5s; */
+}
+
+.face svg {
+    width: clamp(170px, 16vw, 550px);
 }
 
 .face-wraper {
@@ -257,7 +270,7 @@ body {
     left: 0;
     text-transform: uppercase;
     color: #919795;
-    font-size: 1.2rem;
+    /* font-size: 1vw; */
     font-family: inter-thin;
 
     /* transform: translateX(-50%); */
@@ -384,7 +397,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 28px 0;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     text-shadow: var(--brShadow), var(--tlShadow);
 }
 
@@ -397,7 +410,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 28px 0;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     text-shadow: var(--brShadow), var(--tlShadow);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -408,7 +421,7 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5vw;
   color: #000;
 }
 
@@ -439,7 +452,7 @@ h1 {
   position: absolute;
   top: 0;
   left: -15rem;
-  font-size: 24rem;
+  font-size: clamp(20vw,21rem,51rem);
   letter-spacing: 0;
   -webkit-text-stroke-color: var(--green);
   display: inline-block;
@@ -447,7 +460,7 @@ h1 {
 }
 .text-stroke {
     -webkit-text-fill-color: var(--section-bg);
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: clamp(1px, 0.1vw, 2px);
     -webkit-text-stroke-color: var(--parallex-text);
 }
 .grid {
@@ -466,7 +479,8 @@ h1 {
   align-content: center;
   justify-content: center;
   height: 100%;
-  padding: 5rem 11rem 6rem 11rem;
+  /* padding: 10vw 8vh 16vh 9vw; */
+  padding: 7vw 7vh 13vh 9vw;
   background-color: transparent;
   overflow: hidden;
 }
@@ -482,20 +496,20 @@ h1 {
 }
 
 .about-section {
-    min-height: 100dvh;
+    /* min-height: 100dvh; */
     padding: 6.5rem;
     position: relative;
 }
 
 .about-content {
     line-height: 1.8rem;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-family: inter;
 }
 
 .about-title h1 {
     font-family: biter;
-    font-size: 4rem;
+    font-size: clamp(3.2rem, 4.4vw, 8rem);
     margin: 0;
     color: var(--darker-green);
 }
@@ -515,7 +529,9 @@ h1 {
     padding: 7rem;
 }
 
-
+.about-content p {
+    margin-top: 0;
+}
 
 .shapes {
     position: absolute;
@@ -544,7 +560,7 @@ h1 {
     height: 6.8rem;
     font-weight: 600;
     color: #ebebeb47;
-    font-size: 135px;
+    font-size: 5.8vw;
     letter-spacing: 0px;
     line-height: 6.8rem;
     
@@ -609,7 +625,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
     font-weight: 500;
     position: absolute;
     z-index: 1000;
@@ -653,7 +669,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
     font-weight: 500;
     position: absolute;
     z-index: 1000;
@@ -675,17 +691,17 @@ h1 {
 
 .title-left .company-name {
     color: var(--text);
-    font-size: 3rem;
+    font-size: 3.3vw;
 }
 
 .title-left span {
     color: var(--second-text);
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
 }
 
 .title-right {
     color: var(--second-text);
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
 }
 
 .card .card-body {
@@ -708,7 +724,7 @@ h1 {
     color: #2e3159;
     border-radius: 25px;
     padding: 0 1rem;
-    font-size: 1rem;
+    font-size: .7vw;
     margin-right: 10px;
     background: #e1e2e5;
 }
@@ -717,7 +733,7 @@ h1 {
     overflow: hidden;
     font-family: inter, sans-serif;
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 2vw;
     text-transform: uppercase;
     /* background-color: #FFDC00; */
     background-color: var(--darker-green);
@@ -774,7 +790,7 @@ h1 {
     color: var(--darker-green);
     text-shadow: var(--brShadow), var(--tlShadow);
     font-family: biter;
-    font-size: 6rem;
+    font-size: 5vw;
     font-weight: 500;;
     margin-bottom: 1.8rem;
     letter-spacing: 0;
@@ -783,7 +799,7 @@ h1 {
 .contact span {
     text-shadow: var(--brShadow), var(--tlShadow);
     margin-bottom: 0.7rem;
-    font-size: 1.4rem;
+    /* font-size: 1.4rem; */
 }
 
 /* scroll animation for text */
@@ -800,7 +816,7 @@ h1 {
   margin: 0px 0 1px 0;
   height: 1em !important;
   padding: 0px 0 0px 0;
-  font-size: 3em;
+  font-size: 2.5vw;
   text-transform: uppercase;
   width: 100%;
 }
@@ -953,8 +969,12 @@ h1 {
     }
   }
 
+@media (min-width: 2000px) {
+    .panel {
+        padding: 10vw 8vh 16vh 9vw;
+    }
+}
 
-/* Screen larger than 600px? 2 column */
 @media (max-width: 1000px) {
     .about-wrapper {
         grid-template-columns: repeat(1, 1fr);
@@ -962,7 +982,7 @@ h1 {
         padding: 0;
     }
     .contact div {
-        font-size: 5rem;
+        /* font-size: 4.1vw; */
     }
 }
 
@@ -972,7 +992,7 @@ h1 {
         padding: 0;
     }
     .about-title h1 {
-        font-size: 4rem;
+        /* font-size: 4rem; */
     }
     .panel {
         padding: 5rem 4rem 7rem 4rem;
@@ -983,7 +1003,7 @@ h1 {
     }
     .card .card-body {
         line-height: 2rem;
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .frosted {
         padding: 4rem;
@@ -1008,13 +1028,13 @@ h1 {
         padding-top: 50px;
     }
     .title-hi {
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .title-name {
-        font-size: 4rem;
+        /* font-size: 4rem; */
     }
     .title-job {
-        font-size: 3rem;
+        /* font-size: 3rem; */
     }
     .page-header-scroll {
         bottom: -46px;
@@ -1035,7 +1055,7 @@ h1 {
     }
     .card .card-body {
         line-height: 1.3rem;
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .talk-header {
         opacity: 0;
@@ -1048,11 +1068,11 @@ h1 {
         left: 119px;
     }
     .title-job {
-        font-size: 2rem;
+        /* font-size: 2rem; */
         line-height: 2.5rem;
     }
     .title-name {
-        font-size: 3rem;
+        /* font-size: 3rem; */
         line-height: 3.5rem;
     }
     .intro {
@@ -1062,7 +1082,7 @@ h1 {
         padding: 2.5rem;
     }
     .about-title h1 {
-        font-size: 3rem;
+        /* font-size: 3rem; */
     }
     .panel {
         padding: 3.5rem 1.5rem 4rem 1.5rem;
@@ -1079,22 +1099,22 @@ h1 {
     }
     .card .card-body {
         line-height: 1.2rem;
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
     .title-left .company-name {
-        font-size: 2.8rem;
+        /* font-size: 2.8rem; */
     }
     .talk-footer div {
         min-width: 87px;
     }
     .contact div {
-        font-size: 4rem;
+        /* font-size: 4rem; */
     }
 
 }
 .text {
     color: var(--colorMain);
-    font-size: 8em;
+    font-size: 6.6vw;
     font-weight: bold;
     font-family: sans-serif;
     text-transform: uppercase;
@@ -1108,7 +1128,7 @@ h1 {
     backdrop-filter: blur(5px);
     border-radius: 25%;
     border: none;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     background: var(--darker-green);
     font-weight: 500;
     cursor: pointer;

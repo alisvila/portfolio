@@ -292,14 +292,19 @@ let aboutReveal = gsap.timeline({
   },
 })
 
-aboutReveal.to('.about-section .outside *', {
-  y: 0,
+// aboutReveal.to('.about-section .outside *', {
+//   y: 0,
+//   x:0,
+//   opacity: 1,
+//   stagger: .2
+// })
+
+aboutReveal.to('.about-section .outside-y *', {
   x:0,
+  y: 0,
   opacity: 1,
   stagger: .2
 })
-
-
 // let firstCardReveal = gsap.timeline({
 //   scrollTrigger: {
 //     trigger: '.first-card',
