@@ -10,6 +10,11 @@ const cursorCircle = document.querySelector(".cursor-wrapper")
 const cursorDot = document.querySelector(".dot")
 const portfolio = document.querySelector('.section')
 const word = document.querySelector('.word')
+// const player = document.querySelector('#audio')
+// const player_play = document.querySelector('#player_play')
+// const player_pause = document.querySelector('#player_pause')
+// const mySound = new Audio('/assets/hades.mp3')
+// mySound.volume = 0.5;
 
 // Create a max value for the translation in the x and y directions
 const maxTrans = 30;
@@ -30,8 +35,22 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 let theme_toggler = document.querySelector('#theme_toggler');
 
 theme_toggler.addEventListener('click', function(){ 
-    document.body.classList.toggle('blue-theme');
+  document.body.classList.toggle('blue-theme');
 });
+
+// player_play.addEventListener('click', function(){ 
+//   mySound.play()
+//   player_play.style.display = "none";
+//   player_pause.style.display = "inline-block";
+// });
+
+// player_pause.addEventListener('click', function(){ 
+//   console.log('here')
+//   mySound.pause()
+//   player_play.style.display = "inline-block";
+//   player_pause.style.display = "none";
+// });
+
 
 let cardLength
 // the new about
@@ -74,56 +93,19 @@ function loopAnim() {
     });
     
     tl.
-  //   from('.names', {
-  //     y: -302,
-  //     duration: 5,
-  //     ease: 'none'
-  // })
     to('.names', {
         y: -950,
         duration: 30,
         ease: 'none'
-    })
-    // .from('.name__end--red .bandChar', {
-    //     y: 520,
-    //     duration: 3,
-    //     ease: 'power4',
-    //     stagger: 0.05
-    // }, 1)
-    // .from('.name__end--blue .bandChar', {
-    //     y: 120,
-    //     duration: 3,
-    //     ease: 'power4',
-    //     stagger: 0.05
-    // }, 1.3)
-    // .from('.band:nth-of-type(5) .name--blue .bandChar', {
-    //     y: -120,
-    //     duration: 2,
-    //     ease: 'power4.inOut',
-    //     stagger: -0.05
-    // }, 0)
-    // .to('.band:nth-of-type(6) .name--blue .bandChar', {
-    //     y: 120,
-    //     duration: 2,
-    //     ease: 'power4.inOut',
-    //     stagger: -0.05
-    // }, 0)
-    
+    })    
     return tl;
 }
 
 function init() {
     gsap.set(shapesStage, { autoAlpha: 1 });
     gsap.set('.content', { rotate: -25 });
-    // shapesStage.onclick = () => {
-    //     gltl.restart();
-    // }
-    
-    // gltl.add(intro());
     gltl.add(loopAnim(), 0);
 }
-// end of new about
-
 
 let getYPercent, getXPercent;
 
@@ -167,12 +149,7 @@ function resize() {
 }
 
 function updateTrans(e) {
-    // const xPercent = getXPercent(e.pageX);
-    const yPercent = getYPercent(e.pageY);
-    // console.log(yPercent)
-    // setXRot(xPercent * maxRot);
-    // setYRot(yPercent* maxRot* maxRot);
-  // Calculate the distance from the mouse position to the center.
+  const yPercent = getYPercent(e.pageY);
 
   mouseX = e.clientX;
   mouseY = e.clientY;
@@ -185,24 +162,19 @@ function updateTrans(e) {
 
   const xR = e.clientX - centerXR;
   const yR = e.clientY - centerYR;
-  // const dist = Math.sqrt(Math.pow(x, 2) + Math.pow(x, 2)); // optionally use the total distance as a factor or restriction
-
   
-  // Put that number over the max distance from 2)
   const xLPercent = xL / maxXDist;
   const yLPercent = yL / maxYDist;
 
   const xRPercent = xR / maxXDist;
   const yRPercent = yR / maxYDist;
 
-  // Multiply that product by the max value from 1 and apply it to your element.
   const scaledXLPercent = xLPercent * maxTrans;
   const scaledYLPercent = yLPercent * maxTrans;
   
   const scaledXRPercent = xRPercent * maxTrans;
   const scaledYRPercent = yRPercent * maxTrans;
 
-//   update with gsap.quickTo for performance
   gsap.to(leftEye, { xPercent: scaledXLPercent, yPercent: scaledYLPercent, duration: 0.2, overwrite: 'auto' });
   gsap.to(rightEye, { xPercent: scaledXRPercent, yPercent: scaledYRPercent, duration: 0.2, overwrite: 'auto' });
 
@@ -213,7 +185,6 @@ function updateTrans(e) {
   else {
       gsap.to(rightEyebrow, { yPercent: 20, duration: 2, overwrite: 'auto' });
       gsap.to(leftEyebrow, { yPercent: 1, duration: 2, overwrite: 'auto' });
-      // gsap.to(face, { rotation: 2, duration: 2, overwrite: 'auto' });
   }
 
   if (xF > 0 && yF > 0 ) {
@@ -231,18 +202,7 @@ function updateTrans(e) {
     gsap.to(face, { rotation: -2, duration: 2, overwrite: 'auto' });
 
   }
-
-//   if (!requestId) {
-//     requestId = requestAnimationFrame(update);
-//   }
-
-
 }
-
-// function update() {
-//     console.log('first')
-// }
-
 window.addEventListener('resize', resize);
 resize();
 
@@ -292,80 +252,12 @@ let aboutReveal = gsap.timeline({
   },
 })
 
-// aboutReveal.to('.about-section .outside *', {
-//   y: 0,
-//   x:0,
-//   opacity: 1,
-//   stagger: .2
-// })
-
 aboutReveal.to('.about-section .outside-y *', {
   x:0,
   y: 0,
   opacity: 1,
   stagger: .2
 })
-// let firstCardReveal = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.first-card',
-//     start: 'top 80%',
-//     end: 'top top',
-//     scrub: false,
-//     markers: true
-//   },
-// })
-
-// firstCardReveal.to('.first-card .outside *', {
-//   y: 0,
-//   stagger: .2
-// })
-
-// let secondCardReveal = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.second-card',
-//     start: 'left 80%',
-//     end: 'left left',
-//     scrub: false,
-//     markers: true
-//   },
-// })
-
-// secondCardReveal.to('.second-card .outside *', {
-//   y: 0,
-//   stagger: .2
-// })
-
-// let thirdCardReveal = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.second-card',
-//     start: 'left 80%',
-//     end: 'top top',
-//     scrub: false,
-//     markers: true
-//   },
-// })
-
-// thirdCardReveal.to('.third-card .outside *', {
-//   y: 0,
-//   stagger: .2
-// })
-
-// let forthCardReveal = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.forth-card',
-//     start: 'left 80%',
-//     end: 'top top',
-//     scrub: false,
-//     markers: true
-//   },
-// })
-
-// forthCardReveal.to('.forth-card .outside *', {
-//   y: 0,
-//   stagger: .2
-// })
-
-
 
 let container = document.querySelector(".outer");
 let cards = gsap.utils.toArray(".panel")
@@ -379,10 +271,8 @@ let tl = gsap.timeline({
   defaults: { ease: "none", duration: 1 }
 });
 
-
 tl.to(".parallax", { x: 200 })
   .to(".panel", { x: () =>{console.log(cardLength); return (-(cardLength))} }, 0)
-
 
   cards.forEach((stop, index) => {
     tl.to(stop.querySelectorAll('.outside *'), {
@@ -400,59 +290,13 @@ tl.to(".parallax", { x: 200 })
       }
     })
   });
-  // .from(".secondAn", {
-  //   opacity: 0,
-  //   scale: 0.5,
-  //   duration: 0.2,
-  //   stagger: {
-  //     amount: 0.8
-  //   }
-  // }, 0);
-
-// gsap.from(".firstAn", {
-//   duration: 1,
-//   opacity: 0,
-//   scale: .5,
-//   scrollTrigger: {
-//     trigger: container,
-//     start: "top 90%",
-//     end: "bottom 10%",
-//     toggleActions: "play none none reverse"
-//   }
-// });
-
-
-
 
 window.onresize = resize;
 
 window.onload = () => {
 	init();
     resize();
-    // GSDevTools.create();
 };
-
-// TweenMax.to({}, 0.016, {
-//   repeat: -1,
-//   onRepeat: function() {
-//     posX += (mouseX - posX) / 9;
-//     posY += (mouseY - posY) / 9;
-    
-//     TweenMax.set(follower, {
-//         css: {    
-//         left: posX - 12,
-//         top: posY - 12
-//         }
-//     });
-    
-//     TweenMax.set(cursor, {
-//         css: {    
-//         left: mouseX,
-//         top: mouseY
-//         }
-//     });
-//   }
-// });
 
 gsap.set(cursorDot ,{xPercent:-50, yPercent: -50})
 
@@ -466,21 +310,9 @@ portfolio.addEventListener('mouseenter', () => {
       rotate: 0,
       ease: Elastic.easeOut.config(1, 0.3)
   })
-//   gsap.to(cursorDot, 0.2, {
-//     scale: 1,
-//     opacity: 1,
-//     top: '-75px',
-//     left: '-75px',
-//     rotate: 0,
-//     ease: Elastic.easeOut.config(1, 0.3)
-// })
 })
 
 portfolio.addEventListener('mousemove', () => {
-//   gsap.to(cursorDot, 0.2, {
-//     x: mouseX,
-//     y: mouseY - portfolio.getBoundingClientRect().top
-// })
   gsap.to(cursorCircle, 2, {
       x: mouseX - 45,
       y: mouseY - 5 - portfolio.getBoundingClientRect().top
@@ -488,7 +320,6 @@ portfolio.addEventListener('mousemove', () => {
 })
 
 portfolio.addEventListener('mouseleave', () => {
-  console.log('mouse left the section')
   gsap.to(cursorCircle, 0.2, {
       scale: 0,
       opacity: 0,
@@ -496,21 +327,12 @@ portfolio.addEventListener('mouseleave', () => {
       left: '40',
       rotate: 45,
   })
-//   gsap.to(cursorDot, 0.2, {
-//     scale: 0,
-//     opacity: 0,
-//     top: '10',
-//     left: '40',
-//     rotate: 45,
-// })
 })
 
 
 const titleContainer = document.querySelector(".title-container");
 const titleBoxes = document.querySelector(".title-boxes")
-
 const tween = gsap.to(titleBoxes, {yPercent:-50, repeat:10, ease:"none"})
-
 const eased = gsap.to(tween, {totalProgress:1, duration:4, ease:"power4.inOut"})
 
 let letsReveal = gsap.timeline({
@@ -528,7 +350,6 @@ letsReveal.to('.no-opacity *', {
   opacity: 1,
 })
 
-
 function scrollToHash(hash, e) {
   const elem = hash ? document.querySelector(hash) : false;
   if(elem) {
@@ -541,5 +362,3 @@ document.querySelectorAll('a[href]').forEach(a => {
     scrollToHash(a.hash, e);
   });
 });
-
-// scrollToHash(window.location.hash);
