@@ -156,10 +156,10 @@ body {
 }
 
 .title-job {
-    font-size: 3vw;
+    font-size: 2vw;
     font-family: biter;
     color: var(--green);
-    line-height: clamp(1.5rem, 4vw, 148px);
+    line-height: clamp(1.5rem, 3vw, 148px);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
