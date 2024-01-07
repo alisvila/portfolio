@@ -10,11 +10,11 @@ const cursorCircle = document.querySelector(".cursor-wrapper")
 const cursorDot = document.querySelector(".dot")
 const portfolio = document.querySelector('.section')
 const word = document.querySelector('.word')
-// const player = document.querySelector('#audio')
-// const player_play = document.querySelector('#player_play')
-// const player_pause = document.querySelector('#player_pause')
-// const mySound = new Audio('/assets/hades.mp3')
-// mySound.volume = 0.5;
+const player = document.querySelector('#audio')
+const player_play = document.querySelector('#player_play')
+const player_pause = document.querySelector('#player_pause')
+const mySound = new Audio('/assets/wildest.mp3')
+mySound.volume = 0.5;
 
 // Create a max value for the translation in the x and y directions
 const maxTrans = 30;
@@ -32,24 +32,24 @@ const setYRot = gsap.quickSetter(face, "rotationY", "deg");
 
 // const setLeftEye = gsap.quickSetter(leftEye, "rotationY", "deg");
 
-let theme_toggler = document.querySelector('#theme_toggler');
+// let theme_toggler = document.querySelector('#theme_toggler');
 
-theme_toggler.addEventListener('click', function(){ 
-  document.body.classList.toggle('blue-theme');
+// theme_toggler.addEventListener('click', function(){ 
+//   document.body.classList.toggle('blue-theme');
+// });
+
+player_play.addEventListener('click', function(){ 
+  mySound.play()
+  player_play.style.display = "none";
+  player_pause.style.display = "inline-block";
 });
 
-// player_play.addEventListener('click', function(){ 
-//   mySound.play()
-//   player_play.style.display = "none";
-//   player_pause.style.display = "inline-block";
-// });
-
-// player_pause.addEventListener('click', function(){ 
-//   console.log('here')
-//   mySound.pause()
-//   player_play.style.display = "inline-block";
-//   player_pause.style.display = "none";
-// });
+player_pause.addEventListener('click', function(){ 
+  console.log('here')
+  mySound.pause()
+  player_play.style.display = "inline-block";
+  player_pause.style.display = "none";
+});
 
 
 let cardLength
